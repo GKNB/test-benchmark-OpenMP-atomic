@@ -11,7 +11,7 @@
 int main()
 {
   constexpr int N = 1024 * 1024 * 32;
-  constexpr int len = 1024;
+  constexpr int len = 1024 * 128;
   constexpr int nlp = 10;
   srand(1234);
 
