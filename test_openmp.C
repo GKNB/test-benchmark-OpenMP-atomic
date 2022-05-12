@@ -7,7 +7,7 @@
 int main()
 {
   constexpr int N = 1024 * 1024 * 32;
-  constexpr int len = 1024 * 32;
+  constexpr int len = 1024 * 128;
   constexpr int nlp = 10;
   constexpr int rf = 16;  //a factor which removes possible data racing
 

@@ -41,7 +41,7 @@ int main()
 #pragma omp target data use_device_ptr(res_omp,data,pos)
   {
     cuda_scatter_add<dataType>(res_omp, data, pos, N, 128);
-//    cudaDeviceSynchronize();
+//    cudaDeviceSynchronize();  //If I comment it out, result will be incorrect with clang, while the result will always be correct with nvc++ no matter if we comment it out or not    
   }
 #pragma omp target exit data map(from:res_omp[0:len])
 #pragma omp target exit data map(release:data[0:N])
