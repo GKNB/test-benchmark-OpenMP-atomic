@@ -43,10 +43,15 @@ int main()
     cuda_scatter_add<dataType>(res_omp, data, pos, N, 128);
 //    cudaDeviceSynchronize();  //If I comment it out, result will be incorrect with clang, while the result will always be correct with nvc++ no matter if we comment it out or not    
   }
+
+//taskwait construct is useless  
+//#pragma omp taskwait  
+
+//  cudaDeviceSynchronize();    //This one could help
 #pragma omp target exit data map(from:res_omp[0:len])
 #pragma omp target exit data map(release:data[0:N])
 #pragma omp target exit data map(release:pos[0:N])
-//  cudaDeviceSynchronize();
+//  cudaDeviceSynchronize();  //This one is useless
   for(int i=0; i<len; i++)
     std::cout << "i = " << i << "\t res_omp[i] = " << res_omp[i] << std::endl;
 
