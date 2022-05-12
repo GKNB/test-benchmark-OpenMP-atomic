@@ -22,8 +22,9 @@ int main()
   constexpr int len = 1024 * 128;
   constexpr int nlp = 10;
 
-  using dataType = double;
+  using dataType = int;
   dataType delta = (dataType)2e-2;
+  std::cout << "We are testing atomicAdd with type " << typeid(delta).name() << std::endl;
   srand(1234);
 
   int *pos = (int*)malloc(sizeof(int) * N);

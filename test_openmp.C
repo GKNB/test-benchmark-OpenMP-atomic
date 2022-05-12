@@ -7,12 +7,13 @@
 int main()
 {
   constexpr int N = 1024 * 1024 * 32;
-  constexpr int len = 1024;
+  constexpr int len = 1024 * 32;
   constexpr int nlp = 10;
   constexpr int rf = 16;  //a factor which removes possible data racing
 
-  using dataType = double;
+  using dataType = int;
   dataType delta = (dataType)2e-2;
+  std::cout << "We are testing atomicAdd with type " << typeid(delta).name() << std::endl;
   srand(1234);
 
   int *pos = (int*)malloc(sizeof(int) * N);

@@ -11,11 +11,11 @@
 int main()
 {
   constexpr int N = 1024 * 1024 * 32;
-  constexpr int len = 1024;
+  constexpr int len = 1024 * 128;
   constexpr int nlp = 10;
   srand(1234);
 
-  using dataType = float;
+  using dataType = double;
   dataType delta = (dataType)2e-2;
   std::cout << "We are testing atomicAdd with type " << typeid(delta).name() << std::endl;
 
